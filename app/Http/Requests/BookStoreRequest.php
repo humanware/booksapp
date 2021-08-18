@@ -26,7 +26,7 @@ class BookStoreRequest extends FormRequest
         return [
             'bookname' => 'required|min:3|max:120',
             'bookdescription' => 'required',
-            'bookcateogry' => 'required'
+            'bookcategory' => 'required'
         ];
     }
 }

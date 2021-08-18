@@ -24,6 +24,6 @@ class BookController extends Controller
             'category' => $request->bookcategory
         ]);
 
-        return back();
+        return back()->with('success', 'New book added successfully');
     }
 }
