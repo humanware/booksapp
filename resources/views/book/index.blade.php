@@ -23,9 +23,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $num = $books->perPage() * ($books->currentPage() - 1); ?>
                                 @forelse($books as $book)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{ ++$num }}</th>
                                     <td>{{ $book->name }}</td>
                                     <td>{{ $book->description }}</td>
                                     <td>{{ $book->category }}</td>
@@ -42,6 +43,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{ $books->links() }}
                     </div>
                 </div>
             </div>

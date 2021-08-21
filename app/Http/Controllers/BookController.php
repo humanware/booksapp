@@ -9,7 +9,7 @@ use App\Http\Requests\BookStoreRequest;
 class BookController extends Controller
 {
     public function index() {
-        $books = Book::get();
+        $books = Book::paginate(5);
         return view('book.index', compact('books'));
     }
 
