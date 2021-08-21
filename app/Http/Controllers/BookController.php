@@ -26,4 +26,28 @@ class BookController extends Controller
 
         return back()->with('success', 'New book added successfully');
     }
+
+    public function edit($id) {
+        $book = Book::find($id);
+        return view('book.edit', compact('book'));
+    }
+
+    public function update(Request $request,$id) {
+        $book = Book::find($id);
+
+        $book->name = $request->bookname;
+        $book->description = $request->bookdescription;
+        $book->category = $request->bookcategory;
+
+        $book->save();
+
+        return redirect()->route('book.index')->with('message', 'Book updated successfully');
+    }
+
+    public function destroy($id) {
+        $book = Book::find($id);
+        $book->delete();
+
+        return redirect()->route('book.index')->with('message', 'Book Deleted Successfully');
+    }
 }
