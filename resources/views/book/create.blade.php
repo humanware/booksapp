@@ -11,7 +11,7 @@
                             {{ Session::get('success') }}
                         </div>
                         @endif
-                        <form action="{{ route('book.store') }}" method="POST">
+                        <form action="{{ route('book.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="bookname" class="form-label">Book Name</label>
@@ -37,6 +37,13 @@
                                 </select>
                                 @if($errors->has('bookcategory'))
                                 <span class="text-danger">{{ $errors->first('bookcategory') }} </span>
+                                @endif
+                            </div>
+                            <div class="mb-3">
+                                <label for="bookimage" class="form-label">Book Image</label>
+                                <input type="file" class="form-control" id="bookimage" name="bookimage" placeholder="Enter book name">
+                                @if($errors->has('bookimage'))
+                                <span class="text-danger">{{ $errors->first('bookimage') }} </span>
                                 @endif
                             </div>
                             <button type="submit" class="btn btn-primary">Create Book</button>

@@ -14,6 +14,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th scope="col">Image</th>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Description</th>
@@ -26,6 +27,13 @@
                                 <?php $num = $books->perPage() * ($books->currentPage() - 1); ?>
                                 @forelse($books as $book)
                                 <tr>
+                                    <td>
+                                        @if($book->image)
+                                            <img src="{{ Storage::url($book->image) }}" width="100" />
+                                        @else
+                                            <img src="/img/placeholder200x200.jpg" width="100" />
+                                        @endif
+                                    </td>
                                     <th scope="row">{{ ++$num }}</th>
                                     <td>{{ $book->name }}</td>
                                     <td>{{ $book->description }}</td>

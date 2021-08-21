@@ -18,10 +18,12 @@ class BookController extends Controller
     }
 
     public function store(BookStoreRequest $request) {
+        $image = $request->file('bookimage')->store('public/product');
         Book::create([
             'name' => $request->bookname,
             'description' => $request->bookdescription,
-            'category' => $request->bookcategory
+            'category' => $request->bookcategory,
+            'image' => $image,
         ]);
 
         return back()->with('success', 'New book added successfully');
